@@ -9,18 +9,18 @@ int findGCD(int a, int b);
 class Rational
 {
 public:
-    Rational() = default;
+    Rational() noexcept = default;
     
-    Rational(int numerator, int denominator);
-    Rational(const Rational& rhs);
-    Rational(Rational const&& rhs);
+    Rational(int numerator, int denominator) noexcept;
+    Rational(const Rational& rhs) noexcept;
+    Rational(Rational const&& rhs) noexcept;
 
     constexpr const double toDecimal() const noexcept
     {
         return { (double)m_numerator / m_denominator };
     }
 
-    constexpr void operator = (const Rational& rhs ) noexcept;
+    constexpr void operator = (const Rational& rhs) noexcept;
 
     bool operator < (Rational const& rhs) const noexcept;
     bool operator > (Rational const& rhs) const noexcept;
@@ -34,7 +34,6 @@ public:
 
     constexpr bool operator < (float rhs) const noexcept;
     constexpr bool operator > (float rhs) const noexcept;
-
 
     const int& getNumerator() const
     {

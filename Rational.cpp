@@ -1,4 +1,5 @@
 #include "Rational.hpp"
+#include <assert.h>
 
 int findGCD(int a, int b)
 {
@@ -7,21 +8,21 @@ int findGCD(int a, int b)
     return findGCD(b, a % b);
 }
 
-Rational::Rational(int numerator, int denominator)
+Rational::Rational(int numerator, int denominator) noexcept
     : m_numerator(numerator), m_denominator(denominator)
 {
-    if( m_numerator == 0 ) std::__throw_invalid_argument("Numerator must be greater or lower than 0");
-
+    assert( m_denominator != 0 );
+    if(m_numerator == 0) m_denominator = 1;
     reduce();
 }
 
-Rational::Rational(const Rational& rhs)
+Rational::Rational(const Rational& rhs) noexcept
     : m_numerator(rhs.m_numerator), m_denominator(rhs.m_denominator)
 {
     reduce();
 }
 
-Rational::Rational(Rational const&& rhs)
+Rational::Rational(Rational const&& rhs) noexcept
     : m_numerator(rhs.m_numerator), m_denominator(rhs.m_denominator)
 {
     reduce();
