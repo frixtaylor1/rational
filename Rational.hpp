@@ -15,9 +15,9 @@ public:
     Rational(const Rational& rhs) noexcept;
     Rational(Rational const&& rhs) noexcept;
 
-    constexpr const double toDecimal() const noexcept
+    constexpr const float toDecimal() const noexcept
     {
-        return { (double)m_numerator / m_denominator };
+        return { (float)m_numerator / m_denominator };
     }
 
     constexpr void operator = (const Rational& rhs) noexcept;
@@ -35,12 +35,12 @@ public:
     constexpr bool operator < (float rhs) const noexcept;
     constexpr bool operator > (float rhs) const noexcept;
 
-    const int& getNumerator() const
+    inline const int& getNumerator() const noexcept
     {
         return m_numerator;
     }
 
-    const int& getDenominator() const
+    inline const int& getDenominator() const noexcept
     {
         return m_denominator;
     }

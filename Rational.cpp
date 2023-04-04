@@ -84,7 +84,7 @@ constexpr bool Rational::operator < (float rhs) const noexcept
 }
 
 constexpr bool Rational::operator > (float rhs) const noexcept
-{
+{   // the following is the same as return !(operator < (rhs));
     return { !(toDecimal() < rhs) };
 }
 
